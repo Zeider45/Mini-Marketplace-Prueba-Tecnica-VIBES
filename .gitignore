@@ -1,0 +1,20 @@
+# Node dependencies
+api/node_modules/
+web/node_modules/
+
+# Build outputs
+api/dist/
+web/build/
+
+# Environment files
+api/.env
+web/.env
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# Misc
+api/*.tsbuildinfo
