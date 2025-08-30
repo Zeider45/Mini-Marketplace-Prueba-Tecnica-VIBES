@@ -1,21 +1,36 @@
-import type { Product } from "../../shared/types";
+import type {
+  ProductsListResponse,
+  ProductDetailResponse,
+  TopCheapestResponse,
+} from "./types";
+import { PRODUCTS_API_URL } from "./const";
+import { ProductsQuery } from "../../shared/types";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:3001";
+export async function getProducts(
+  query?: ProductsQuery
+): Promise<ProductsListResponse> {
+  const queryParams = new URLSearchParams();
+  if (query) {
+    Object.entries(query).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+        queryParams.append(key, value);
+      }
+    });
+  }
 
-export async function fetchProducts(): Promise<Product[]> {
-  const res = await fetch(`${API_BASE}/api/products`);
-  if (!res.ok) throw new Error("Error fetching products");
-  return res.json();
+  const res = await fetch(`${PRODUCTS_API_URL}?${queryParams.toString()}`);
+  return res.json() as Promise<ProductsListResponse>;
 }
 
-export async function fetchProductById(id: string): Promise<Product> {
-  const res = await fetch(`${API_BASE}/api/products/${id}`);
-  if (!res.ok) throw new Error("Product not found");
-  return res.json();
+export async function getProductById(
+  id: string
+): Promise<ProductDetailResponse> {
+  const res = await fetch(`${PRODUCTS_API_URL}/${id}`);
+  return res.json() as Promise<ProductDetailResponse>;
 }
 
-export async function fetchTopCheapest(top: number = 3): Promise<Product[]> {
-  const res = await fetch(`${API_BASE}/api/products/top-cheap?top=${top}`);
-  if (!res.ok) throw new Error("Error fetching top cheapest");
-  return res.json();
+export async function getTopCheapest(top = 3): Promise<TopCheapestResponse> {
+  const res = await fetch(`${PRODUCTS_API_URL}/top-cheap?top=${top}`);
+
+  return res.json() as Promise<TopCheapestResponse>;
 }
