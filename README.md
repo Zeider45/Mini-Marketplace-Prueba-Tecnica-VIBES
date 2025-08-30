@@ -19,6 +19,20 @@ Mi proyecto fullstack Mini-marketplace con API REST en Express + TypeScript y fr
   cd ../web && bun install
 ```
 
+## Configuración del router de productos
+
+Puedes elegir entre el router de productos basado en MongoDB o el basado en JSON para el backend.  
+La selección se realiza modificando el archivo `api/src/index.ts`:
+
+- Para usar el router de MongoDB, asegúrate de que la línea activa sea:
+  ```js
+  app.use("/api/products", mongoProductsRouter);
+  ```
+- Para usar el router de JSON, comenta la línea anterior y descomenta:
+  ```js
+  app.use("/api/products", jsonProductsRouter);
+  ```
+
 ## Ejecución
 
 - **API**:
