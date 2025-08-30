@@ -36,13 +36,13 @@ Mi proyecto fullstack Mini-marketplace con API REST en Express + TypeScript y fr
 
 - Se decidió que, cada vez que el usuario aplica o modifica un filtro en la página de productos, se realice una nueva solicitud al endpoint correspondiente en lugar de traer inicialmente todos los productos y filtrarlos en el cliente, esto con el fin de los siguientes objetivos:
 
-Unicamente se consultan y envían desde el servidor los productos que cumplen con los criterios de filtrado, evitando transferencias innecesarias de grandes volúmenes de información.
+  - Unicamente se consultan y envían desde el servidor los productos que cumplen con los criterios de filtrado, evitando transferencias innecesarias de grandes volúmenes de información.
 
-Al no cargar y procesar la totalidad de los productos en el navegador, se reduce el consumo de memoria y se mejora la experiencia del usuario.
+  - Al no cargar y procesar la totalidad de los productos en el navegador, se reduce el consumo de memoria y se mejora la experiencia del usuario.
 
-Permite manejar catálogos de productos más extensos sin afectar de manera significativa el tiempo de carga ni el uso de recursos en el cliente.
+  - Permite manejar catálogos de productos más extensos sin afectar de manera significativa el tiempo de carga ni el uso de recursos en el cliente.
 
-Por lo tanto la lógica de filtrado se centraliza en el servidor, mientras que el cliente se encarga únicamente de solicitar y mostrar los resultados necesarios, garantizando así una mayor eficiencia en la aplicación.
+  - Por lo tanto la lógica de filtrado se centraliza en el servidor, mientras que el cliente se encarga únicamente de solicitar y mostrar los resultados necesarios, garantizando así una mayor eficiencia en la aplicación.
 
 - Se ha decidido mantener la funcionalidad de mostrar los tres productos más baratos como un apartado independiente, separado de los filtros de búsqueda generales. Esta decisión busca mejorar la legibilidad y escalabilidad del sistema, evitando que la lógica de filtrado principal se sobrecargue o genere conflictos. De esta manera, la visualización de los productos destacados se mantiene clara y fácilmente extensible a futuras funcionalidades.
 
