@@ -11,6 +11,9 @@ app.use(cors());
 // Use the middleware to parse the body of requests in JSON format
 app.use(express.json());
 
+// Use the express.static middleware to serve static files
+app.use(express.static("src/public"));
+
 app.use("/api/products", productsRouter);
 
 app.listen(PORT, () => {
