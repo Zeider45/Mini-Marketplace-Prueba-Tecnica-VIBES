@@ -8,7 +8,6 @@ const router = Router();
 let products: Product[] = productsData.products;
 
 router.get("/", (req: Request, res: Response) => {
-  const TOTAL_PRODUCTS = products.length;
   try {
     let result = [...products];
     if (!result) {
@@ -57,7 +56,7 @@ router.get("/", (req: Request, res: Response) => {
     res.status(200).json({
       success: true,
       data: {
-        total: TOTAL_PRODUCTS,
+        total: result.length,
         products: result,
       },
       error: null,
@@ -77,7 +76,11 @@ router.get("/top-cheap", (req: Request, res: Response) => {
     const top = topParam ? parseInt(topParam, 10) : 3;
 
     if (isNaN(top) || top < 1) {
-      return res.status(400).json({ error: 'Parámetro "top" inválido' });
+      return res.status(400).json({
+        success: false,
+        error: 'Parámetro "top" inválido',
+        data: null,
+      });
     }
 
     const cheapestProducts = getTopCheapestAvailable(products, top);
