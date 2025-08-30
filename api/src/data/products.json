@@ -1,7 +1,16 @@
 {
   "products": [
-  { "id": "p1", "name": "Guantes GN102", "price": 59.9, "isAvailable": true, "category": "gloves", "image": "/img/gn102.jpg" },
-  { "id": "p2", "name": "Casco CS433",  "price": 79.9, "isAvailable": false, "category": "headgear", "image": "/img/cs433.jpg" },
-  { "id": "p3", "name": "Bolsa AC990",   "price": 24.5, "isAvailable": true, "category": "bag", "image": "/img/ac990.jpg" }
+  { "id": "p1", "name": "Guantes GN102", "price": 59.9, "isAvailable": true, "category": "gloves", "image": "/images/placeholder.svg" },
+  { "id": "p2", "name": "Casco CS433",  "price": 79.9, "isAvailable": false, "category": "headgear", "image": "/images/placeholder.svg" },
+  { "id": "p3", "name": "Bolsa AC990",   "price": 24.5, "isAvailable": true, "category": "bag", "image": "/images/placeholder.svg" },
+  { "id": "p4", "name": "Cinturón CT210", "price": 34.9, "isAvailable": true, "category": "belt", "image": "/images/placeholder.svg" },
+  { "id": "p5", "name": "Rodilleras RD501", "price": 29.9, "isAvailable": false, "category": "kneepads", "image": "/images/placeholder.svg" },
+  { "id": "p6", "name": "Botas BT800", "price": 99.9, "isAvailable": true, "category": "boots", "image": "/images/placeholder.svg" },
+  { "id": "p7", "name": "Chaleco CH300", "price": 49.9, "isAvailable": true, "category": "vest", "image": "/images/placeholder.svg" },
+  { "id": "p8", "name": "Gafas GF120", "price": 19.9, "isAvailable": false, "category": "glasses", "image": "/images/placeholder.svg" },
+  { "id": "p9", "name": "Linterna LT200", "price": 39.9, "isAvailable": true, "category": "flashlight", "image": "/images/placeholder.svg" },
+  { "id": "p10", "name": "Cuerda CR150", "price": 14.9, "isAvailable": true, "category": "rope", "image": "/images/placeholder.svg" },
+  { "id": "p11", "name": "Mochila MC500", "price": 89.9, "isAvailable": false, "category": "backpack", "image": "/images/placeholder.svg" },
+  { "id": "p12", "name": "Protector solar PS100", "price": 12.5, "isAvailable": true, "category": "sunscreen", "image": "/images/placeholder.svg" }
 ]
 }

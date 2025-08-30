@@ -1,5 +1,5 @@
 import { Router, type Request, type Response } from "express";
-import type { ProductsQuery } from "./types.js";
+import type { ProductsQuery } from "../../shared/types.js";
 import type { Product } from "../../shared/types.js";
 import productsData from "./data/products.json" assert { type: "json" };
 import { getTopCheapestAvailable } from "../../shared/utils.js";
@@ -8,6 +8,7 @@ const router = Router();
 let products: Product[] = productsData.products;
 
 router.get("/", (req: Request, res: Response) => {
+  const TOTAL_PRODUCTS = products.length;
   try {
     let result = [...products];
     if (!result) {
@@ -56,9 +57,34 @@ router.get("/", (req: Request, res: Response) => {
     res.status(200).json({
       success: true,
       data: {
-        total: result.length,
+        total: TOTAL_PRODUCTS,
         products: result,
       },
+      error: null,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      data: null,
+      error: "Internal Server Error",
+    });
+  }
+});
+
+router.get("/top-cheap", (req: Request, res: Response) => {
+  try {
+    const topParam = req.query.top as string;
+    const top = topParam ? parseInt(topParam, 10) : 3;
+
+    if (isNaN(top) || top < 1) {
+      return res.status(400).json({ error: 'Parámetro "top" inválido' });
+    }
+
+    const cheapestProducts = getTopCheapestAvailable(products, top);
+
+    res.status(200).json({
+      success: true,
+      data: cheapestProducts,
       error: null,
     });
   } catch (error) {
@@ -90,32 +116,6 @@ router.get("/:id", (req: Request, res: Response) => {
       success: false,
       data: null,
       error: "Internal server error",
-    });
-  }
-});
-
-router.get("/top-cheap", (req: Request, res: Response) => {
-  try {
-    const topParam = req.query.top as string;
-    const top = topParam ? parseInt(topParam, 10) : 3;
-
-    if (isNaN(top) || top < 1) {
-      return res.status(400).json({ error: 'Parámetro "top" inválido' });
-    }
-
-    const cheapestProducts = getTopCheapestAvailable(products, top);
-    res.json(cheapestProducts);
-
-    res.status(200).json({
-      success: true,
-      data: cheapestProducts,
-      error: null,
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      data: null,
-      error: "Internal Server Error",
     });
   }
 });
